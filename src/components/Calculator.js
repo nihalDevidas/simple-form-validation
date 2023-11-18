@@ -1,5 +1,9 @@
 import React,{useState} from 'react'
 
+
+
+
+
 const Calculator = () => {
 
     const[input1Value, setInput1] = useState("")
@@ -35,11 +39,11 @@ const Calculator = () => {
             }
           }
 
+
         if(input1Value == "" || input2Value == ""){   // if nothing is entered
           setError("input values")
           setValue(null)
         }
-
         else
         {
           let operation  = e.target.getAttribute("data-operation")     // get operation to perform as a string(+,-,/,*)
@@ -56,19 +60,20 @@ const Calculator = () => {
     }
 
 
+
     function calculateResult(number1, number2, arithmaticOperator){
 
-      switch(arithmaticOperator){
-        case "+": setValue(number1+number2)
-                  return;
-        case "-": setValue(number1-number2)
-                  return;
-        case "*": setValue(number1*number2)
-                  return;
-        case "/": setValue(number1/number2)
-                  return;
-        default: setValue(null)          
-      }
+        switch(arithmaticOperator){
+          case "+": setValue(number1+number2)
+                    return;
+          case "-": setValue(number1-number2)
+                    return;
+          case "*": setValue(number1*number2)
+                    return;
+          case "/": setValue((number1/number2).toFixed(4))
+                    return;
+          default: setValue(null)          
+        }
     }
 
 
@@ -97,7 +102,7 @@ const Calculator = () => {
                                             Error!
                                           </div>
 
-                                          <div>
+                                          <div className='text'>
                                             {errorMessage}
                                           </div>
                                       </div>}
@@ -106,7 +111,7 @@ const Calculator = () => {
                                      <div className='sucess'>
                                        Sucess!
                                      </div>
-                                     <div>
+                                     <div className='text'>
                                        Result :{calculatedValue}
                                      </div>
                                    </div>:
